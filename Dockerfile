@@ -188,6 +188,8 @@ RUN echo "c.NotebookApp.password = 'sha1:ba63e3d5f01d:4e50e54ee752ab2b0b7e7bc3ae
 # ------------------------------------------------------------------
 RUN mkdir /workspace/notebooks && mkdir /workspace/data
 
+RUN conda install -y nodejs
+
 EXPOSE 6006 8888
 
 CMD jupyter notebook --no-browser --ip=0.0.0.0 --port=8888 --allow-root --notebook-dir='/workspace'
