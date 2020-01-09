@@ -181,15 +181,13 @@ WORKDIR /workspace
 # Jupyter stuff
 # ------------------------------------------------------------------
 RUN pip install jupyterlab
-RUN jupyter notebook --generate-config
+RUN jupyter notebook --generate-config && conda install -y nodejs
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN echo "c.NotebookApp.password = 'sha1:ba63e3d5f01d:4e50e54ee752ab2b0b7e7bc3ae2891b0ee8933c7'" > /root/.jupyter/jupyter_notebook_config.py
 # ------------------------------------------------------------------
 # Two folders, probably for different storages
 # ------------------------------------------------------------------
 RUN mkdir /workspace/notebooks && mkdir /workspace/data
-
-RUN conda install -y nodejs
 
 EXPOSE 6006 8888
 
