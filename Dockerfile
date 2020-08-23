@@ -98,7 +98,7 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
 # ------------------------------------------------------------------
 
     $PIP_INSTALL \
-        tf-nightly \
+        tensorflow \
         && \
 
 # ==================================================================
@@ -140,7 +140,11 @@ RUN APT_INSTALL="apt-get install -y --no-install-recommends" && \
           .. && \
     make -j"$(nproc)" install && \
     ln -s /usr/local/include/opencv4/opencv2 /usr/local/include/opencv2 && \
-
+    
+# ==================================================================
+# pytorch & tools
+# ------------------------------------------------------------------
+    $PIP_INSTALL torch transformers nlp pytorch_lightning \
 # ==================================================================
 # sonnet
 # ------------------------------------------------------------------
